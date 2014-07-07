@@ -1,8 +1,13 @@
 /* 
-1. вывод фильтров
-2. подсчет найденных товаров. вывод в синей рамке.
-3. вывод только первого массива с кнопкой показать еще (x).
+1. вывод фильтров +
+2. подсчет найденных товаров. вывод в синей рамке. +
+3. сделать рабочие фильтры
+4. вывести все фильтры
+5. сделать анимацию фильтров
+n-1. подверстать фильтры по всей ширине экрана
+n. вывод только первого массива с кнопкой показать еще (x).
  */
+
 var Request = Backbone.Model.extend({
 	text: '',
 	data: {},
@@ -32,6 +37,7 @@ jQuery(document).ready(function() {
 	Backbone.history.start({
 		pushState: true
 	});
+	
 });
 
 function setFormSubmit(form) {
@@ -58,8 +64,9 @@ function launchSearch(text) {
 	.done(function(data) {
 		request.data = data;
 		data.length ? processResult(request.data) : alert('Товар не найден.');
-		request.countItems = countItems(request.data);
+		
 		console.log(request.countItems);
+		initSticky();
 	})
 	.fail(function(error) {
 		console.log(error);
@@ -69,46 +76,69 @@ function launchSearch(text) {
 function processResult(data) {
 	var items = new Array();
 	var itemSkeleton = $('.item').first().clone();
+	var index = 0; //index for arr
 	for(i in data) {
 		if(data[i].items.length) {
-			request.filters.push(getFilters(data[i]);
 			items[i] = new Array();
-			for(j in data[i].items) {
+			for(j in data[i].items) { //get and process items
 				items[i].push(wrapItem(data[i].items[j], itemSkeleton.clone()));
 			}
+			request.countItems.push(data[i].items.length);
+			request.filters.push(getFilters(data[i], index));
+			index += 1;
 		}
 	}
 	request.items = processArrItems(items);
 	
-	showResult(request.items);
-}
-
-function getFilters(data) { // call for each main arr element
-	filterSkeleton = getFilterSkeleton();
-	return filters;
+	// request.countItems = countItems(request.data);
 	
+	// console.log(request.items);
+	showResult(request.items, request.filters);
 }
 
-function getFilterSkeleton() {
-	skeleton = jQuery('.search-result, .sort-form, .sort-links');
-	return skeleton;
+function getFilters(data, i) { // call for each main arr element
+	filterSkeleton = jQuery('.search-wrapper');
+	filters = processFilterData(filterSkeleton.clone(), i);
+	return filters;
+}
+
+function processFilterData(body, index) {
+	// console.log(request.countItems);
+	console.log(index);
+	body.find('.result strong').text(request.countItems[index]); // insert countItems
+	return body;
 }
 
 function processArrItems(arr) {
 	//delete empty elements from arr
+	var resArr = new Array();
+	arr = $.map(arr, function(e, i) {
+		return [e]
+	});
 	for(i in arr) {
-		arr[i].length ? '' : delete arr[i];
+		if(arr[i] != undefined) {
+			resArr.push(arr[i]);
+		}
 	}
-	return arr;
+	return resArr;
 }
 
-function showResult(items) {
-	// console.log(items);
+function showResult(items, filters) {
+	// console.log(filters);
 	jQuery('.result-holder').empty();
 	for(i in items) {
-		
+		// i > 0 ? jQuery(filters[i]).clone().appendTo('.result-holder').addClass('filter' + i + '') : '';
+		jQuery(filters[i]).clone().appendTo('.result-holder').addClass('filter' + i + '');
 		for(j in items[i]) {
-			jQuery(items[i][j]).clone().appendTo('.result-holder');
+			// j == false ? jQuery('<div class="result-block extra"></div>').appendTo('.result-holder') : '';
+			if(j == false) {
+				if(i == false) {
+					jQuery('<div class="result-block main n' + i + '"></div>').appendTo('.result-holder');
+				} else {
+					jQuery('<div class="result-block extra n' + i + '"></div>').appendTo('.result-holder');
+				}
+			}
+			jQuery(items[i][j]).clone().appendTo('.result-block.n' + i + '');
 		}
 	}
 }
@@ -135,3 +165,91 @@ function countItems(data) {
 	}
 	return arr;
 }
+
+function fadeBtnShowAll() {
+	
+	this.fadeNum = function() {
+		// el.removeClass('active');
+		// thisSticky.find('span.result').fadeIn(500);
+		// thisSticky.find('a.link-more').fadeOut(500);
+	}
+	
+	this.fadeBtn = function() {
+		// el.addClass('active');
+		// thisSticky.find('span.result').fadeOut(500);
+		// thisSticky.find('a.link-more').fadeIn(500);
+	}
+}
+
+function initSticky() {
+	var headerHeight = jQuery('#header').outerHeight();
+	var newStickies = new stickyTitles(jQuery(".search-wrapper"), headerHeight);
+	newStickies.load();
+	
+	jQuery(window).on("scroll", function() {
+		newStickies.scroll();
+	}); 
+}
+
+function stickyTitles(stickies, fromTop) {
+	
+    this.load = function() {
+        stickies.each(function(){
+            var thisSticky = jQuery(this).wrap('<div class="followWrap" />');
+            thisSticky.parent().height(thisSticky.outerHeight());
+
+            jQuery.data(thisSticky[0], 'pos', thisSticky.offset().top);
+        });
+    }
+
+    this.scroll = function() {
+		var scrollTop = jQuery(document).scrollTop()
+		if(!scrollTop) { 
+			stickies.first().removeClass('active')
+			stickies.first().find('span.result').fadeIn(500)
+			stickies.first().find('a.link-more').fadeOut(500)
+			// console.log(stickies.first().hasClass('active'));
+		}
+		
+        stickies.each(function(i){
+            var thisSticky = jQuery(this),
+                nextSticky = stickies.eq(i+1),
+                prevSticky = stickies.eq(i-1),
+                pos = jQuery.data(thisSticky[0], 'pos');
+
+			if(!thisSticky.hasClass('active') && thisSticky.hasClass('fixed') && !thisSticky.hasClass('absolute') && scrollTop > 0) { 
+				thisSticky.addClass('active');
+				thisSticky.find('span.result').fadeOut(500);
+				thisSticky.find('a.link-more').fadeIn(500);
+			} else if(thisSticky.hasClass('active') && (!thisSticky.hasClass('fixed') || thisSticky.hasClass('absolute'))) {
+				thisSticky.removeClass('active');
+				thisSticky.find('span.result').fadeIn(500);
+				thisSticky.find('a.link-more').fadeOut(500);
+			}
+			
+            if (pos <= jQuery(window).scrollTop() + fromTop) {
+				
+                thisSticky.addClass("fixed");
+
+                if (nextSticky.length > 0 && thisSticky.offset().top >= jQuery.data(nextSticky[0], 'pos') - thisSticky.outerHeight()) {
+
+                    thisSticky.addClass("absolute").css("top", jQuery.data(nextSticky[0], 'pos') - thisSticky.outerHeight() - fromTop);
+
+                }
+
+            } else {
+
+				
+                thisSticky.removeClass("fixed");
+
+                if (prevSticky.length > 0 && jQuery(window).scrollTop() + fromTop <= jQuery.data(thisSticky[0], 'pos')  - prevSticky.outerHeight()) {
+
+                    prevSticky.removeClass("absolute").removeAttr("style");
+
+                }
+
+            }
+        });         
+    }
+}
+

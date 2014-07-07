@@ -25,7 +25,7 @@
 </head>
 <body>
 	<!-- page -->
-	<div class="page" style="padding-top: 160px;">
+	<div class="page">
 		<!-- header -->
 		<div id="header">
 			<div class="header-holder">
@@ -38,174 +38,180 @@
 						</fieldset>
 					</form>
 				</div>
-				<!-- search-result -->
-				<form class="search-result" action="#">
-					<fieldset>
-						<div class="cell">
-							<input type="text" value="Велосипед">
-						</div>
-						<div class="cell">
-							<label for="use">Применение:</label>
-							<div class="selectArea size01 inp-select" id="sarea0" style="width: 220px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText0" class="center">Горный</span><a href="javascript:showOptions(0)" class="selectButton"></a></div>
-							<select id="use" class="size01 inp-select outtaHere">
-								<option>Горный</option>
-								<option>Горный</option>
-								<option>Горный</option>
-							</select>
-						</div>
-						<div class="cell">
-							<label for="diameter">Диаметр колес:</label>
-							<div class="selectArea size02 inp-select" id="sarea1" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText1" class="center">28”</span><a href="javascript:showOptions(1)" class="selectButton"></a></div>
-							<select id="diameter" class="size02 inp-select outtaHere">
-								<option>28”</option>
-								<option>26”</option>
-								<option>24”</option>
-							</select>
-						</div>
-						<span class="result" style="display: block;"><strong>96</strong> найдено</span>
-						<a class="link-more" href="#" style="display: none;">Показать все</a>
-					</fieldset>
-				</form>
 			</div>
 		</div>
 		<!-- main -->
 		<div id="main">
-			<!-- sort-form -->
-			<form class="sort-form" action="#">
-				<fieldset>
-					<div class="cell">
-						<label for="make">Марка: </label>
-						<ul>
-							<li><a href="#">Giant</a></li>
-							<li><a href="#">TREK</a></li>
-							<li><a href="#">STELS</a></li>
-						</ul>
-						<div class="selectArea size02 inp-select sort-select" id="sarea2" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText2" class="center">Все</span><a href="javascript:showOptions(2)" class="selectButton"></a></div><select id="make" class="size02 inp-select sort-select outtaHere">
-							<option>Все</option>
-						</select>
-					</div>
-					<div class="cell">
-						<label>Модель: </label>
-						<ul>
-							<li><a href="#">2012</a></li>
-							<li><a href="#">2011</a></li>
-							<li><a href="#">2013</a></li>
-						</ul>
-					</div>
-					<div class="cell">
-						<label for="type">Тип:</label>
-						<ul>
-							<li><a href="#">взрослый</a></li>
-						</ul>
-						<div class="selectArea size02 inp-select sort-select" id="sarea3" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText3" class="center">Все</span><a href="javascript:showOptions(3)" class="selectButton"></a></div><select id="type" class="size02 inp-select sort-select outtaHere">
-							<option>Все</option>
-							<option>Все</option>
-							<option>Все</option>
-						</select>
-					</div>
-					<input type="submit" value="Еще">
-				</fieldset>
-			</form>
-			<!-- sort-links -->
-			<div class="sort-links">
-				<strong class="title">Сортировать по:</strong>
-				<ul>
-					<li><a href="#">популярности</a></li>
-					<li><a href="#">цене</a></li>
-					<li><a href="#">новизне</a></li>
-				</ul>
-			</div>
 			<!-- result-section -->
 			<div class="result-section">
 				<div class="result-holder">
-					<!-- item -->
-					<div class="item">
-						<div class="photo-holder">
-							<a class="open" href="#">
-								<img src="img/img01.jpg" alt="Велосипед">
-							</a>
-						</div>
-						<h2><a class="open" href="#"><strong>Велосипед</strong> Italtrike 1050 Racing team</a></h2>
-						<div class="row">
-							<ul class="rating">
-								<li class="one-star" title="Rate this 1 star out of 5">1</li>
-								<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
-								<li class="three-stars" title="Rate this 3 star out of 5">3</li>
-								<li class="four-stars" title="Rate this 4 star out of 5">4</li>
-								<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+					<!-- search-wrapper -->
+					<div class="search-wrapper">
+						<!-- search-result -->
+						<form class="search-result" action="#">
+							<fieldset>
+								<div class="cell">
+									<input type="text" value="Велосипед">
+								</div>
+								<div class="cell">
+									<label for="use">Применение:</label>
+									<div class="selectArea size01 inp-select" id="sarea0" style="width: 220px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText0" class="center">Горный</span><a href="javascript:showOptions(0)" class="selectButton"></a></div>
+									<select id="use" class="size01 inp-select outtaHere">
+										<option>Горный</option>
+										<option>Горный</option>
+										<option>Горный</option>
+									</select>
+								</div>
+								<div class="cell">
+									<label for="diameter">Диаметр колес:</label>
+									<div class="selectArea size02 inp-select" id="sarea1" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText1" class="center">28”</span><a href="javascript:showOptions(1)" class="selectButton"></a></div>
+									<select id="diameter" class="size02 inp-select outtaHere">
+										<option>28”</option>
+										<option>26”</option>
+										<option>24”</option>
+									</select>
+								</div>
+								<span class="result" style="display: block;"><strong>96</strong> найдено</span>
+								<a class="link-more" href="#" style="display: none;">Показать все</a>
+							</fieldset>
+						</form>
+						<!-- sort-form -->
+						<form class="sort-form" action="#">
+							<fieldset>
+								<div class="cell">
+									<label for="make">Марка: </label>
+									<ul>
+										<li><a href="#">Giant</a></li>
+										<li><a href="#">TREK</a></li>
+										<li><a href="#">STELS</a></li>
+									</ul>
+									<div class="selectArea size02 inp-select sort-select" id="sarea2" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText2" class="center">Все</span><a href="javascript:showOptions(2)" class="selectButton"></a></div><select id="make" class="size02 inp-select sort-select outtaHere">
+										<option>Все</option>
+									</select>
+								</div>
+								<div class="cell">
+									<label>Модель: </label>
+									<ul>
+										<li><a href="#">2012</a></li>
+										<li><a href="#">2011</a></li>
+										<li><a href="#">2013</a></li>
+									</ul>
+								</div>
+								<div class="cell">
+									<label for="type">Тип:</label>
+									<ul>
+										<li><a href="#">взрослый</a></li>
+									</ul>
+									<div class="selectArea size02 inp-select sort-select" id="sarea3" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText3" class="center">Все</span><a href="javascript:showOptions(3)" class="selectButton"></a></div><select id="type" class="size02 inp-select sort-select outtaHere">
+										<option>Все</option>
+										<option>Все</option>
+										<option>Все</option>
+									</select>
+								</div>
+								<input type="submit" value="Еще">
+							</fieldset>
+						</form>
+						<!-- sort-links -->
+						<div class="sort-links">
+							<strong class="title">Сортировать по:</strong>
+							<ul>
+								<li><a href="#">популярности</a></li>
+								<li><a href="#">цене</a></li>
+								<li><a href="#">новизне</a></li>
 							</ul>
-							<a href="#">10 Отзывов</a>
 						</div>
-						<strong class="price">2,299 $</strong>
-						<dl class="description">
-							<dt>Тип: </dt>
-							<dd>взрослый, </dd>
-							<dt>Материал рамы: </dt>
-							<dd>алюминий,</dd>
-							<dt>Амортизация: </dt>
-							<dd>вилка, </dd>
-							<dt>Диаметр колес: </dt>
-							<dd>28"</dd>
-						</dl>
 					</div>
-					<!-- item -->
-					<div class="item">
-						<div class="photo-holder">
-							<a class="open" href="#"><img src="img/img01.jpg" alt="Велосипед"></a>
+					<div class="result-block main">
+						<!-- item -->
+						<div class="item">
+							<div class="photo-holder">
+								<a class="open" href="#">
+									<img src="img/img01.jpg" alt="Велосипед">
+								</a>
+							</div>
+							<h2><a class="open" href="#"><strong>Велосипед</strong> Italtrike 1050 Racing team</a></h2>
+							<div class="row">
+								<ul class="rating">
+									<li class="one-star" title="Rate this 1 star out of 5">1</li>
+									<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+									<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+									<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+									<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+								</ul>
+								<a href="#">10 Отзывов</a>
+							</div>
+							<strong class="price">2,299 $</strong>
+							<dl class="description">
+								<dt>Тип: </dt>
+								<dd>взрослый, </dd>
+								<dt>Материал рамы: </dt>
+								<dd>алюминий,</dd>
+								<dt>Амортизация: </dt>
+								<dd>вилка, </dd>
+								<dt>Диаметр колес: </dt>
+								<dd>28"</dd>
+							</dl>
 						</div>
-						<h2><a class="open" href="#"><strong>Велосипед</strong> ORBEA Occam 29 S10 (2013)</a></h2>
-						<div class="row">
-							<ul class="rating">
-								<li class="one-star" title="Rate this 1 star out of 5">1</li>
-								<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
-								<li class="three-stars" title="Rate this 3 star out of 5">3</li>
-								<li class="four-stars" title="Rate this 4 star out of 5">4</li>
-								<li class="five-stars" title="Rate this 5 star out of 5">5</li>
-							</ul>
-							<a href="#">10 Отзывов</a>
+						<!-- item -->
+						<div class="item">
+							<div class="photo-holder">
+								<a class="open" href="#"><img src="img/img01.jpg" alt="Велосипед"></a>
+							</div>
+							<h2><a class="open" href="#"><strong>Велосипед</strong> ORBEA Occam 29 S10 (2013)</a></h2>
+							<div class="row">
+								<ul class="rating">
+									<li class="one-star" title="Rate this 1 star out of 5">1</li>
+									<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+									<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+									<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+									<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+								</ul>
+								<a href="#">10 Отзывов</a>
+							</div>
+							<strong class="price">2,299 $</strong>
+							<dl class="description">
+								<dt>Диаметр колес: </dt>
+								<dd>28"</dd>
+								<dt>Применение: </dt>
+								<dd>горный, </dd>
+								<dt>Тип: </dt>
+								<dd>взрослый, </dd>
+								<dt>Материал рамы: </dt>
+								<dd>алюминий,</dd>
+							</dl>
 						</div>
-						<strong class="price">2,299 $</strong>
-						<dl class="description">
-							<dt>Диаметр колес: </dt>
-							<dd>28"</dd>
-							<dt>Применение: </dt>
-							<dd>горный, </dd>
-							<dt>Тип: </dt>
-							<dd>взрослый, </dd>
-							<dt>Материал рамы: </dt>
-							<dd>алюминий,</dd>
-						</dl>
-					</div>
-					<!-- item -->
-					<div class="item">
-						<span class="mark">Mark</span>
-						<div class="photo-holder">
-							<a class="open" href="#"><img src="img/img01.jpg" alt="Велосипед"></a>
+						<!-- item -->
+						<div class="item">
+							<span class="mark">Mark</span>
+							<div class="photo-holder">
+								<a class="open" href="#"><img src="img/img01.jpg" alt="Велосипед"></a>
+							</div>
+							<h2><a class="open" href="#"><strong>Велосипед</strong> ORBEA Occam 29 S10 (2013)</a></h2>
+							<div class="row">
+								<ul class="rating">
+									<li class="one-star" title="Rate this 1 star out of 5">1</li>
+									<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+									<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+									<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+									<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+								</ul>
+								<a href="#">10 Отзывов</a>
+							</div>
+							<strong class="price">2,299 $</strong>
+							<dl class="description">
+								<dt>Диаметр колес: </dt>
+								<dd>28"</dd>
+								<dt>Применение: </dt>
+								<dd>горный, </dd>
+								<dt>Тип: </dt>
+								<dd>взрослый, </dd>
+								<dt>Материал рамы: </dt>
+								<dd>алюминий,</dd>
+							</dl>
 						</div>
-						<h2><a class="open" href="#"><strong>Велосипед</strong> ORBEA Occam 29 S10 (2013)</a></h2>
-						<div class="row">
-							<ul class="rating">
-								<li class="one-star" title="Rate this 1 star out of 5">1</li>
-								<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
-								<li class="three-stars" title="Rate this 3 star out of 5">3</li>
-								<li class="four-stars" title="Rate this 4 star out of 5">4</li>
-								<li class="five-stars" title="Rate this 5 star out of 5">5</li>
-							</ul>
-							<a href="#">10 Отзывов</a>
-						</div>
-						<strong class="price">2,299 $</strong>
-						<dl class="description">
-							<dt>Диаметр колес: </dt>
-							<dd>28"</dd>
-							<dt>Применение: </dt>
-							<dd>горный, </dd>
-							<dt>Тип: </dt>
-							<dd>взрослый, </dd>
-							<dt>Материал рамы: </dt>
-							<dd>алюминий,</dd>
-						</dl>
 					</div>
 				</div>
+				<a class="more" href="#">Показать еще (<span>84</span>)</a>
 			</div>
 		</div>
 	</div>

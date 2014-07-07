@@ -83,9 +83,11 @@ textarea{
 	overflow:hidden;
 	background:#fff;
 	z-index:99;
-	border-bottom:1px solid #fff;
+	/* border-bottom:1px solid #fff; */
 }
-#header.active-state{border-color:#e5e5e5;}
+#header.active-state{
+	/* border-color:#e5e5e5; */
+}
 .header-holder{
 	margin:0 auto;
 	min-width:1000px;
@@ -95,7 +97,26 @@ textarea{
 	overflow:hidden;
 	background:#372f2b;
 	padding:19px 9999px 22px;
-	margin:0 -9999px 10px;
+	/* margin:0 -9999px 10px; */
+	margin:0 -9999px 0;
+	position: relative;
+	z-index: 10;
+}
+.search-wrapper {
+	padding-top: 10px;
+	border: 1px solid #e5e5e5;
+	background: #FFF;
+	box-shadow: 0px -10px 25px 0px #d0d0cd
+}
+.search-wrapper.fixed {
+	position: fixed;
+	top: 80px;
+	z-index: 5;
+	width: 100%;
+}
+.search-wrapper.fixed.absolute {
+	position: absolute;
+	top: 80px;
 }
 /* logo */
 .logo{
@@ -241,7 +262,7 @@ textarea{
 	overflow:hidden;
 	max-width:1310px;
 	margin:0 auto;
-	padding:0 5px;
+	/* padding:0 5px; */
 }
 /* sort-form */
 .sort-form{
@@ -249,7 +270,7 @@ textarea{
 	border:3px solid #ececec;
 	border-radius:7px;
 	padding:9px 15px 0;
-	margin:0 8px 22px;
+	margin:10px 8px 22px;
 	position:relative;
 }
 .sort-form .cell:first-child,
@@ -364,15 +385,21 @@ textarea{
 .result-section{
 	overflow:hidden;
 	background:#efefeb;
-	border:1px solid #e5e5e5;
+	/* border:1px solid #e5e5e5; */
 	border-radius:2px;
-	padding:39px 0 42px;
+	/* padding:39px 0 42px; */
+	padding:0 0 42px;
 	margin:0 0 30px;
 	text-align:center;
 }
 .result-section .result-holder{
 	overflow:hidden;
 	position:relative;
+}
+/* result-block */
+.result-block {
+	margin-bottom: 30px;
+	padding-top: 30px;
 }
 /* item */
 .item{
