@@ -62,8 +62,9 @@ function launchSearch(text) {
 		dataType: 'json'
 	})
 	.done(function(data) {
-		request.data = data;
-		data.length ? processResult(request.data) : alert('Товар не найден.');
+		request.data = data.results;
+		console.log(request.data);
+		request.data.length ? processResult(request.data) : alert('Товар не найден.');
 		
 		console.log(request.countItems);
 		initSticky();
