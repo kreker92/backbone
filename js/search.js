@@ -1,11 +1,10 @@
 /* 
-1. вывод фильтров +
-2. подсчет найденных товаров. вывод в синей рамке. +
-3. сделать рабочие фильтры
-4. вывести все фильтры
+1. Сделать вывод и сохранение данных фильтров для каждого набора для обработки кнопки "показать еще".
+2. сделать кнопку "показать еще"
+3. вывести все фильтры
+4. сделать рабочие фильтры
 5. сделать анимацию фильтров
 n-1. подверстать фильтры по всей ширине экрана
-n. вывод только первого массива с кнопкой показать еще (x).
  */
 
 var Request = Backbone.Model.extend({
@@ -13,7 +12,9 @@ var Request = Backbone.Model.extend({
 	data: {},
 	items: new Array(),
 	filters: new Array(),
-	countItems: new Array()
+	countItems: new Array(),
+	itemsLimit: 4, // need to determine with approaching the site
+	showMoreBtns: new Array()
 });
 
 var Router = Backbone.Router.extend({
@@ -50,6 +51,37 @@ function setFormSubmit(form) {
 	});
 }
 
+function initShowMoreBtns() {
+	jQuery('.more').each(function(i, e) {
+		var data = { params: request.data[i].params, category_id: request.data[i].category_id, parent_cat: request.data[i].parent_cat };
+		var offset = jQuery(this).attr('data-offset');
+		var limit = '0';
+		console.log(data); 
+		jQuery(this).on('click', function() {
+			jQuery.ajax({
+				type: 'POST',
+				url: 'http://ci.detectum.com/filter.json?offset=' + offset + '&limit=' + limit + '',
+				data: data,
+				dataType: 'json'
+			})
+			.done(function(data) {
+				request.data.push(data)
+				request.data.length ? processShowMore(data) : alert('Все товары уже отображены.');
+			})
+			.fail(function(error) {
+				console.log(error);
+			});
+			
+			// request.set({ offset: jQuery(this).attr('data-offset') });
+			return false;
+		});
+	});
+}
+
+function processShowMore(items) {
+	
+}
+
 function insertTextInFields(formField, text) {
 	for(i in formField) {
 		formField[i].val(text);
@@ -58,16 +90,17 @@ function insertTextInFields(formField, text) {
 
 function launchSearch(text) {
 	jQuery.ajax({
-		url: 'http://ci.detectum.com:8080/ci/search?q=' + text,
+		url: 'http://ci.detectum.com/search.json',
+		data: { q: text, limit: request.itemsLimit },
 		dataType: 'json'
 	})
 	.done(function(data) {
-		request.data = data.results;
-		console.log(request.data);
+		request.data = data;
+		// console.log(request.data);
 		request.data.length ? processResult(request.data) : alert('Товар не найден.');
-		
-		console.log(request.countItems);
+		// console.log(request.countItems);
 		initSticky();
+		initShowMoreBtns();
 	})
 	.fail(function(error) {
 		console.log(error);
@@ -76,25 +109,29 @@ function launchSearch(text) {
 
 function processResult(data) {
 	var items = new Array();
-	var itemSkeleton = $('.item').first().clone();
+	var itemSkeleton = jQuery('.item').first().clone();
+	var showMoreSkeleton = jQuery('.more').first().clone();
+	jQuery('.more').remove();
 	var index = 0; //index for arr
 	for(i in data) {
-		if(data[i].items.length) {
+		// if(data[i].items.length) {
 			items[i] = new Array();
 			for(j in data[i].items) { //get and process items
 				items[i].push(wrapItem(data[i].items[j], itemSkeleton.clone()));
 			}
-			request.countItems.push(data[i].items.length);
+			request.countItems.push(data[i].total);
 			request.filters.push(getFilters(data[i], index));
 			index += 1;
-		}
+			request.showMoreBtns.push(setshowMoreBtns(showMoreSkeleton.clone(), data[i].total-request.itemsLimit));
+		// }
 	}
 	request.items = processArrItems(items);
+	
 	
 	// request.countItems = countItems(request.data);
 	
 	// console.log(request.items);
-	showResult(request.items, request.filters);
+	showResult(request.items, request.filters, request.showMoreBtns);
 }
 
 function getFilters(data, i) { // call for each main arr element
@@ -105,7 +142,7 @@ function getFilters(data, i) { // call for each main arr element
 
 function processFilterData(body, index) {
 	// console.log(request.countItems);
-	console.log(index);
+	// console.log(index);
 	body.find('.result strong').text(request.countItems[index]); // insert countItems
 	return body;
 }
@@ -124,7 +161,7 @@ function processArrItems(arr) {
 	return resArr;
 }
 
-function showResult(items, filters) {
+function showResult(items, filters, showMoreBtns) {
 	// console.log(filters);
 	jQuery('.result-holder').empty();
 	for(i in items) {
@@ -140,6 +177,9 @@ function showResult(items, filters) {
 				}
 			}
 			jQuery(items[i][j]).clone().appendTo('.result-block.n' + i + '');
+		}
+		if(showMoreBtns[i]) {
+			jQuery('.result-block.n' + i + '').append(showMoreBtns[i]);
 		}
 	}
 }
@@ -158,6 +198,13 @@ function wrapItem(item, itemSkeleton) {
 	}
 	return itemSkeleton;
 }
+
+function setshowMoreBtns(skeleton, offset) {
+	var resBtn = 0;
+	jQuery(skeleton).attr('data-offset', offset).find('span').text(offset);
+	offset > 0 ? resBtn = jQuery(skeleton) : resBtn = 0;
+	return resBtn;
+} 
 
 function countItems(data) {
 	var arr = new Array();
