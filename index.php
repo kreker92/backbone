@@ -7,11 +7,13 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	
 	<link media="all" type="text/css" rel="stylesheet" href="css/all.css">
+	<link media="all" type="text/css" rel="stylesheet" href="css/selectbox.css">
 	
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/underscore-min.js"></script>
 	<script type="text/javascript" src="/js/backbone-min.js"></script>
 	<script type="text/javascript" src="/js/backbone.queryparams.js"></script>
+	<script type="text/javascript" src="/js/jquery.selectbox.js"></script>
 	<script type="text/javascript" src="/js/main.js"></script>
 	<script type="text/javascript" src="/js/search.js"></script>
 	<!--[if gte IE 9]>
@@ -51,21 +53,21 @@
 						<form class="search-result" action="#">
 							<fieldset>
 								<div class="cell">
-									<input type="text" value="Велосипед">
+									<input class="category-name" type="text" value="Велосипед" disabled>
 								</div>
 								<div class="cell">
 									<label for="use">Применение:</label>
-									<div class="selectArea size01 inp-select" id="sarea0" style="width: 220px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText0" class="center">Горный</span><a href="javascript:showOptions(0)" class="selectButton"></a></div>
-									<select id="use" class="size01 inp-select outtaHere">
+									<select class="use" class="size01 inp-select">
+										<option>Не важно</option>
 										<option>Горный</option>
-										<option>Горный</option>
-										<option>Горный</option>
+										<option>Городской</option>
+										<option>BMX</option>
 									</select>
 								</div>
 								<div class="cell">
 									<label for="diameter">Диаметр колес:</label>
-									<div class="selectArea size02 inp-select" id="sarea1" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText1" class="center">28”</span><a href="javascript:showOptions(1)" class="selectButton"></a></div>
-									<select id="diameter" class="size02 inp-select outtaHere">
+									<select class="diameter" class="size02 inp-select">
+										<option>Не важно</option>
 										<option>28”</option>
 										<option>26”</option>
 										<option>24”</option>
@@ -85,7 +87,7 @@
 										<li><a href="#">TREK</a></li>
 										<li><a href="#">STELS</a></li>
 									</ul>
-									<div class="selectArea size02 inp-select sort-select" id="sarea2" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText2" class="center">Все</span><a href="javascript:showOptions(2)" class="selectButton"></a></div><select id="make" class="size02 inp-select sort-select outtaHere">
+									<select class="make" class="size02 inp-select sort-select">
 										<option>Все</option>
 									</select>
 								</div>
@@ -102,7 +104,7 @@
 									<ul>
 										<li><a href="#">взрослый</a></li>
 									</ul>
-									<div class="selectArea size02 inp-select sort-select" id="sarea3" style="width: 110px;"><span class="left"></span><span class="disabled" style="display: none;"></span><span id="mySelectText3" class="center">Все</span><a href="javascript:showOptions(3)" class="selectButton"></a></div><select id="type" class="size02 inp-select sort-select outtaHere">
+									<select class="type" class="size02 inp-select sort-select">
 										<option>Все</option>
 										<option>Все</option>
 										<option>Все</option>
@@ -151,6 +153,116 @@
 								<dt>Диаметр колес: </dt>
 								<dd>28"</dd>
 							</dl>
+							<!-- gallery-section -->
+							<div class="gallery-section">
+								<div class="holder">
+									<ul class="gallery">
+										<li>
+											<img src="img/img02.jpg" alt="Велосипед ORBEA Occam 29 S10 (2013)">
+											<div class="holder">
+												<h3>Велосипед ORBEA Occam 29 S10 (2013)</h3>
+												<div class="row">
+													<ul class="rating style02">
+														<li class="one-star" title="Rate this 1 star out of 5">1</li>
+														<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+														<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+														<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+														<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+													</ul>
+													<a href="#">10 Отзывов</a>
+												</div>
+												<dl class="description">
+													<dt>Диаметр колес: </dt>
+													<dd>28"</dd>
+													<dt>Применение: </dt>
+													<dd>горный, </dd>
+													<dt>Вес: </dt>
+													<dd>4,5 кг.</dd>
+													<dt>Руль: </dt>
+													<dd>изогнутый. </dd>
+													<dt>Вилка: </dt>
+													<dd>жесткая. </dd>
+													<dt>Передний тормоз: </dt>
+													<dd>нет. </dd>
+													<dt>Задний тормоз: </dt>
+													<dd>нет.</dd>
+													<dt>Конструкция вилки : </dt>
+													<dd>жесткая.</dd>
+													<dt>Конструкция руля :</dt>
+													<dd>изогнутый. </dd>
+													<dt>Крылья : </dt>
+													<dd>есть</dd>
+													<dt>Передний тормоз : </dt>
+													<dd>отсутствует.</dd>
+													<dt>Тип : </dt>
+													<dd>детский</dd>
+													<dt>Тип : </dt>
+													<dd>трехколесный. </dd>
+													<dt>Цвет : </dt>
+													<dd>розовый</dd>
+												</dl>
+												<div class="btn-box">
+													<a class="btn" href="#">Купить</a>
+													<a href="#">Добавить в вишлист</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<img src="img/img02.jpg" alt="Велосипед ORBEA Occam 29 S10 (2013)">
+											<div class="holder">
+												<h3>Велосипед Stinger HORNET (X38549)</h3>
+												<div class="row">
+													<ul class="rating style02">
+														<li class="one-star" title="Rate this 1 star out of 5">1</li>
+														<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+														<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+														<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+														<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+													</ul>
+													<a href="#">10 Отзывов</a>
+												</div>
+												<dl class="description">
+													<dt>Диаметр колес: </dt>
+													<dd>28"</dd>
+													<dt>Применение: </dt>
+													<dd>горный, </dd>
+													<dt>Вес: </dt>
+													<dd>4,5 кг.</dd>
+													<dt>Руль: </dt>
+													<dd>изогнутый. </dd>
+													<dt>Вилка: </dt>
+													<dd>жесткая. </dd>
+													<dt>Передний тормоз: </dt>
+													<dd>нет. </dd>
+													<dt>Задний тормоз: </dt>
+													<dd>нет.</dd>
+													<dt>Конструкция вилки : </dt>
+													<dd>жесткая.</dd>
+													<dt>Конструкция руля :</dt>
+													<dd>изогнутый. </dd>
+													<dt>Крылья : </dt>
+													<dd>есть</dd>
+													<dt>Передний тормоз : </dt>
+													<dd>отсутствует.</dd>
+													<dt>Тип : </dt>
+													<dd>детский</dd>
+													<dt>Тип : </dt>
+													<dd>трехколесный. </dd>
+													<dt>Цвет : </dt>
+													<dd>розовый</dd>
+												</dl>
+												<div class="btn-box">
+													<a class="btn" href="#">Купить</a>
+													<a href="#">Добавить в вишлист</a>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<a class="prev" href="#">Назад</a>
+								<a class="next" href="#">Вперед</a>
+								<a class="close" href="#">Закрыть</a>
+							</div>
 						</div>
 						<!-- item -->
 						<div class="item">
@@ -179,6 +291,116 @@
 								<dt>Материал рамы: </dt>
 								<dd>алюминий,</dd>
 							</dl>
+							<!-- gallery-section -->
+							<div class="gallery-section">
+								<div class="holder">
+									<ul class="gallery">
+										<li>
+											<img src="img/img02.jpg" alt="Велосипед ORBEA Occam 29 S10 (2013)">
+											<div class="holder">
+												<h3>Велосипед ORBEA Occam 29 S10 (2013)</h3>
+												<div class="row">
+													<ul class="rating style02">
+														<li class="one-star" title="Rate this 1 star out of 5">1</li>
+														<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+														<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+														<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+														<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+													</ul>
+													<a href="#">10 Отзывов</a>
+												</div>
+												<dl class="description">
+													<dt>Диаметр колес: </dt>
+													<dd>28"</dd>
+													<dt>Применение: </dt>
+													<dd>горный, </dd>
+													<dt>Вес: </dt>
+													<dd>4,5 кг.</dd>
+													<dt>Руль: </dt>
+													<dd>изогнутый. </dd>
+													<dt>Вилка: </dt>
+													<dd>жесткая. </dd>
+													<dt>Передний тормоз: </dt>
+													<dd>нет. </dd>
+													<dt>Задний тормоз: </dt>
+													<dd>нет.</dd>
+													<dt>Конструкция вилки : </dt>
+													<dd>жесткая.</dd>
+													<dt>Конструкция руля :</dt>
+													<dd>изогнутый. </dd>
+													<dt>Крылья : </dt>
+													<dd>есть</dd>
+													<dt>Передний тормоз : </dt>
+													<dd>отсутствует.</dd>
+													<dt>Тип : </dt>
+													<dd>детский</dd>
+													<dt>Тип : </dt>
+													<dd>трехколесный. </dd>
+													<dt>Цвет : </dt>
+													<dd>розовый</dd>
+												</dl>
+												<div class="btn-box">
+													<a class="btn" href="#">Купить</a>
+													<a href="#">Добавить в вишлист</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<img src="img/img02.jpg" alt="Велосипед ORBEA Occam 29 S10 (2013)">
+											<div class="holder">
+												<h3>Велосипед Stinger HORNET (X38549)</h3>
+												<div class="row">
+													<ul class="rating style02">
+														<li class="one-star" title="Rate this 1 star out of 5">1</li>
+														<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+														<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+														<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+														<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+													</ul>
+													<a href="#">10 Отзывов</a>
+												</div>
+												<dl class="description">
+													<dt>Диаметр колес: </dt>
+													<dd>28"</dd>
+													<dt>Применение: </dt>
+													<dd>горный, </dd>
+													<dt>Вес: </dt>
+													<dd>4,5 кг.</dd>
+													<dt>Руль: </dt>
+													<dd>изогнутый. </dd>
+													<dt>Вилка: </dt>
+													<dd>жесткая. </dd>
+													<dt>Передний тормоз: </dt>
+													<dd>нет. </dd>
+													<dt>Задний тормоз: </dt>
+													<dd>нет.</dd>
+													<dt>Конструкция вилки : </dt>
+													<dd>жесткая.</dd>
+													<dt>Конструкция руля :</dt>
+													<dd>изогнутый. </dd>
+													<dt>Крылья : </dt>
+													<dd>есть</dd>
+													<dt>Передний тормоз : </dt>
+													<dd>отсутствует.</dd>
+													<dt>Тип : </dt>
+													<dd>детский</dd>
+													<dt>Тип : </dt>
+													<dd>трехколесный. </dd>
+													<dt>Цвет : </dt>
+													<dd>розовый</dd>
+												</dl>
+												<div class="btn-box">
+													<a class="btn" href="#">Купить</a>
+													<a href="#">Добавить в вишлист</a>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<a class="prev" href="#">Назад</a>
+								<a class="next" href="#">Вперед</a>
+								<a class="close" href="#">Закрыть</a>
+							</div>
 						</div>
 						<!-- item -->
 						<div class="item">
@@ -208,6 +430,116 @@
 								<dt>Материал рамы: </dt>
 								<dd>алюминий,</dd>
 							</dl>
+							<!-- gallery-section -->
+							<div class="gallery-section">
+								<div class="holder">
+									<ul class="gallery">
+										<li>
+											<img src="img/img02.jpg" alt="Велосипед ORBEA Occam 29 S10 (2013)">
+											<div class="holder">
+												<h3>Велосипед ORBEA Occam 29 S10 (2013)</h3>
+												<div class="row">
+													<ul class="rating style02">
+														<li class="one-star" title="Rate this 1 star out of 5">1</li>
+														<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+														<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+														<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+														<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+													</ul>
+													<a href="#">10 Отзывов</a>
+												</div>
+												<dl class="description">
+													<dt>Диаметр колес: </dt>
+													<dd>28"</dd>
+													<dt>Применение: </dt>
+													<dd>горный, </dd>
+													<dt>Вес: </dt>
+													<dd>4,5 кг.</dd>
+													<dt>Руль: </dt>
+													<dd>изогнутый. </dd>
+													<dt>Вилка: </dt>
+													<dd>жесткая. </dd>
+													<dt>Передний тормоз: </dt>
+													<dd>нет. </dd>
+													<dt>Задний тормоз: </dt>
+													<dd>нет.</dd>
+													<dt>Конструкция вилки : </dt>
+													<dd>жесткая.</dd>
+													<dt>Конструкция руля :</dt>
+													<dd>изогнутый. </dd>
+													<dt>Крылья : </dt>
+													<dd>есть</dd>
+													<dt>Передний тормоз : </dt>
+													<dd>отсутствует.</dd>
+													<dt>Тип : </dt>
+													<dd>детский</dd>
+													<dt>Тип : </dt>
+													<dd>трехколесный. </dd>
+													<dt>Цвет : </dt>
+													<dd>розовый</dd>
+												</dl>
+												<div class="btn-box">
+													<a class="btn" href="#">Купить</a>
+													<a href="#">Добавить в вишлист</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<img src="img/img02.jpg" alt="Велосипед ORBEA Occam 29 S10 (2013)">
+											<div class="holder">
+												<h3>Велосипед Stinger HORNET (X38549)</h3>
+												<div class="row">
+													<ul class="rating style02">
+														<li class="one-star" title="Rate this 1 star out of 5">1</li>
+														<li class="two-stars active" title="Rate this 2 star out of 5">2</li>
+														<li class="three-stars" title="Rate this 3 star out of 5">3</li>
+														<li class="four-stars" title="Rate this 4 star out of 5">4</li>
+														<li class="five-stars" title="Rate this 5 star out of 5">5</li>
+													</ul>
+													<a href="#">10 Отзывов</a>
+												</div>
+												<dl class="description">
+													<dt>Диаметр колес: </dt>
+													<dd>28"</dd>
+													<dt>Применение: </dt>
+													<dd>горный, </dd>
+													<dt>Вес: </dt>
+													<dd>4,5 кг.</dd>
+													<dt>Руль: </dt>
+													<dd>изогнутый. </dd>
+													<dt>Вилка: </dt>
+													<dd>жесткая. </dd>
+													<dt>Передний тормоз: </dt>
+													<dd>нет. </dd>
+													<dt>Задний тормоз: </dt>
+													<dd>нет.</dd>
+													<dt>Конструкция вилки : </dt>
+													<dd>жесткая.</dd>
+													<dt>Конструкция руля :</dt>
+													<dd>изогнутый. </dd>
+													<dt>Крылья : </dt>
+													<dd>есть</dd>
+													<dt>Передний тормоз : </dt>
+													<dd>отсутствует.</dd>
+													<dt>Тип : </dt>
+													<dd>детский</dd>
+													<dt>Тип : </dt>
+													<dd>трехколесный. </dd>
+													<dt>Цвет : </dt>
+													<dd>розовый</dd>
+												</dl>
+												<div class="btn-box">
+													<a class="btn" href="#">Купить</a>
+													<a href="#">Добавить в вишлист</a>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<a class="prev" href="#">Назад</a>
+								<a class="next" href="#">Вперед</a>
+								<a class="close" href="#">Закрыть</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -215,9 +547,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="optionsDivInvisible drop-size01 inp-select outtaHere" id="optionsDiv0" style="width: 220px; left: 437px; top: 136px; height: auto;"><ul><li><a href="javascript:showOptions(0); selectMe('use',0,0);">Горный</a></li><li><a href="javascript:showOptions(0); selectMe('use',1,0);">Горный</a></li><li><a href="javascript:showOptions(0); selectMe('use',2,0);">Горный</a></li></ul></div>
-	<div class="optionsDivInvisible drop-size02 inp-select outtaHere" id="optionsDiv1" style="width: 110px; left: 849px; top: 136px; height: auto;"><ul><li><a href="javascript:showOptions(1); selectMe('diameter',0,1);">28”</a></li><li><a href="javascript:showOptions(1); selectMe('diameter',1,1);">26”</a></li><li><a href="javascript:showOptions(1); selectMe('diameter',2,1);">24”</a></li></ul></div>
-	<div class="optionsDivInvisible drop-size02 inp-select sort-select outtaHere" id="optionsDiv2" style="width: 110px;"><ul><li><a href="javascript:showOptions(2); selectMe('make',0,2);">Все</a></li></ul></div>
-	<div class="optionsDivInvisible drop-size02 inp-select sort-select outtaHere" id="optionsDiv3" style="width: 110px;"><ul><li><a href="javascript:showOptions(3); selectMe('type',0,3);">Все</a></li><li><a href="javascript:showOptions(3); selectMe('type',1,3);">Все</a></li><li><a href="javascript:showOptions(3); selectMe('type',2,3);">Все</a></li></ul></div>
 </body>
 </html>

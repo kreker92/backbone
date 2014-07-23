@@ -476,7 +476,7 @@ function init() {
 	separateElements();
 	//replaceRadios();
 	//replaceCheckboxes();
-	replaceSelects();
+	// replaceSelects();
 	var _selects = document.getElementsByTagName('select');
 	var _SelctClassName = [];
 	if (_selects) {
@@ -692,7 +692,7 @@ function replaceButtons() {
 		buttonHolder.appendChild(buttonRight);
 	}
 }
-//replacing selects
+/* //replacing selects
 function replaceSelects() {
 	for(var q = 0; q < selects.length; q++) {
 	if (!selects[q].replaced && selects[q].offsetWidth && (selects[q].className.indexOf('inp-select') != -1))
@@ -779,8 +779,8 @@ function replaceSelects() {
 		}
 	}
 	all_selects = true;
-}
-//collecting select options
+} */
+/* //collecting select options
 function populateSelectOptions(me) {
 	me._options.innerHTML = "";
 	
@@ -818,8 +818,8 @@ function populateSelectOptions(me) {
 	else {
 		me._disabled.style.display = "none";
 	}
-}
-//select event
+} */
+/* //select event
 function selectEvent(e) {
 	if (!e) var e = window.event;
 	var thecode = e.keyCode;
@@ -843,8 +843,8 @@ function selectEvent(e) {
 		default:
 			break;
 	}
-}
-//selecting me
+} */
+/* //selecting me
 function selectMe(selectFieldId,linkNo,selectNo) {
 	selectField = selects[selectNo];
 	for(var k = 0; k < selectField.options.length; k++) {
@@ -880,8 +880,8 @@ function selectMe(selectFieldId,linkNo,selectNo) {
 		{
 			eval(selectField.onchange());
 		}
-}
-//showing options
+} */
+/* //showing options
 function showOptions(g) {
 		_elem = document.getElementById("optionsDiv"+g);
 		if (active_select && active_select != _elem) {
@@ -905,8 +905,8 @@ function showOptions(g) {
 			_elem.className = _elem.className.replace("optionsDivVisible", "optionsDivInvisible");
 		}
 		//_elem.onmouseout = hideOptions;
-}
-function findPosY(obj) {
+} */
+/* function findPosY(obj) {
 	var posTop = 0;
 	while (obj.offsetParent) {posTop += obj.offsetTop; obj = obj.offsetParent;}
 	return posTop;
@@ -915,5 +915,5 @@ function findPosX(obj) {
 	var posLeft = 0;
 	while (obj.offsetParent) {posLeft += obj.offsetLeft; obj = obj.offsetParent;}
 	return posLeft;
-}
+} */
 window.onload = init;

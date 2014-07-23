@@ -1,0 +1,111 @@
+.selectbox {
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+	color: #404040;
+	font-size: 17px;
+	line-height: 34px;
+	border: 1px solid #e4e4e4;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	border-radius: 3px;
+	/* overflow: hidden; */
+	position: relative;
+	background: #fff url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #ffffff 0%, #fcfcfc 15%, #f9f9f9 72%, #f5f5f5 88%, #f5f5f5 97%, #f8f8f8 97%, #f8f8f8 99%, #e4e4e4 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(15%,#fcfcfc), color-stop(72%,#f9f9f9), color-stop(88%,#f5f5f5), color-stop(97%,#f5f5f5), color-stop(97%,#f8f8f8), color-stop(99%,#f8f8f8), color-stop(100%,#e4e4e4));
+	background: -webkit-linear-gradient(top, #ffffff 0%,#fcfcfc 15%,#f9f9f9 72%,#f5f5f5 88%,#f5f5f5 97%,#f8f8f8 97%,#f8f8f8 99%,#e4e4e4 100%);
+	background: -o-linear-gradient(top, #ffffff 0%,#fcfcfc 15%,#f9f9f9 72%,#f5f5f5 88%,#f5f5f5 97%,#f8f8f8 97%,#f8f8f8 99%,#e4e4e4 100%);
+	background: -ms-linear-gradient(top, #ffffff 0%,#fcfcfc 15%,#f9f9f9 72%,#f5f5f5 88%,#f5f5f5 97%,#f8f8f8 97%,#f8f8f8 99%,#e4e4e4 100%);
+	background: linear-gradient(to bottom, #ffffff 0%,#fcfcfc 15%,#f9f9f9 72%,#f5f5f5 88%,#f5f5f5 97%,#f8f8f8 97%,#f8f8f8 99%,#e4e4e4 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e4e4e4',GradientType=0 );
+	cursor: pointer;
+	font-family: helveticaneuecyrroman, Arial, Helvetica, sans-serif;
+	font-size: 17px;
+}
+.selectbox .select {
+	padding: 0 45px 0 10px;
+}
+.selectbox .select:hover {
+	
+}
+.selectbox .select:active {
+	
+}
+.selectbox.focused .select {
+	
+}
+.selectbox .select .text {
+	display: block;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-family: gotham_promedium;
+	font-size: 17px;
+	line-height: 34px;
+}
+.selectbox .trigger {
+	position: absolute;
+	top: 4px;
+	right: 7px;
+	width: 23px;
+	height: 23px;
+	background: url(../img/sprite.png) no-repeat -177px 0;
+}
+.selectbox .trigger .arrow {
+	position: absolute;
+	top: 14px;
+	right: 12px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #000;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+}
+.selectbox:hover .arrow {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.selectbox .dropdown {
+	top: 33px;
+	width: 240px;
+	margin: 0;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	border-radius: 3px;
+	border: 1px solid #e4e4e4;
+	border-top: 0;
+}
+.selectbox .dropdown ul {
+	margin: -3px -1px 0 -1px;
+	list-style: none;
+	overflow: hidden;
+	color: #404040;
+	font-size: 17px;
+	line-height: 34px;
+	border: 1px solid #e4e4e4;
+	border-top: none;
+	overflow: hidden;
+	background: #f5f5f5;
+	font-size: 17px;
+	line-height: 20px;
+	padding: 0;
+}
+.selectbox li {
+	padding: 5px 10px 6px;
+	color: #231F20;
+}
+.selectbox li.sel {
+	font-weight: bold;
+}
+.selectbox li:hover {
+	background: #e4e4e4;
+}
+.selectbox li.disabled {
+	color: #AAA;
+}
+.selectbox li.disabled:hover {
+	background: none;
+}

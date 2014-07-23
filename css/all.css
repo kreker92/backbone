@@ -169,10 +169,11 @@ textarea{
 	background: -ms-linear-gradient(top,  #3b85c8 0%,#387fc0 25%,#2c6ba3 72%,#29659b 89%,#286499 100%,#372f2b 100%); 
 	background: linear-gradient(to bottom,  #3b85c8 0%,#387fc0 25%,#2c6ba3 72%,#29659b 89%,#286499 100%,#372f2b 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b85c8', endColorstr='#372f2b',GradientType=0 );
+	
 }
 /* search-result */
 .search-result{
-	overflow:hidden;
+	/* overflow:hidden; */
 	position:relative;
 	padding:12px 100px 3px 9px;
 }
@@ -260,13 +261,13 @@ textarea{
 /* main */
 #main{
 	overflow:hidden;
-	max-width:1310px;
+	/* max-width:1310px; */
 	margin:0 auto;
 	/* padding:0 5px; */
 }
 /* sort-form */
 .sort-form{
-	overflow:hidden;
+	/* overflow:hidden; */
 	border:3px solid #ececec;
 	border-radius:7px;
 	padding:9px 15px 0;
@@ -676,6 +677,7 @@ textarea{
 	text-decoration:none;
 	border:1px solid #c9c9c9;
 	text-transform:uppercase;
+	margin-top: 10px;
 }
 /* custom selects */
 .outtaHere {
@@ -773,3 +775,5 @@ textarea{
 	overflow:hidden;
 }
 .optionsDivVisible a:hover{background:#e4e4e4;}
+
+.clr { clear: both; }
