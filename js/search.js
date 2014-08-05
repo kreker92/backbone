@@ -1,11 +1,12 @@
 /* 
 * Сделать вывод и сохранение данных фильтров для каждого набора для обработки кнопки "показать еще". (Ждем Access Origin) +
 * сделать кнопку "показать еще" +
+* сделать кнопку "показать все" (убирать анимацию с result на show more) +
 * вывод в input text фильтра категории товара (не строки поиска) +
-* заставить работать (выпадать) списки +-
+* заставить работать (выпадать) списки +
 * выводить карточку товара с навигацией
 * сделать itemLimit динамической (зависит от ширины экрана) +
-* вывести все фильтры 
+* вывести все фильтры !!!!!!!!!!
 * сделать рабочие фильтры
 * сделать анимацию фильтров
 * подверстать фильтры по всей ширине экрана
@@ -59,15 +60,55 @@ function setFormSubmit(form) {
 	});
 }
 
+function initFilters() {
+	$('.search-wrapper').each(function(i, e) {
+		$(this).find('select').change(function() {
+			// data-filter-id
+			getItemsWithFilters(i, $(this).attr('name'), $(this).val());
+		});
+		// $(this).find('input[type="radio"]').change(function() {
+			// $(this).
+		// });
+	});
+}
+
+function getItemsWithFilters(i, name, val) {
+	console.log(request.data[i])
+	$(request.data[i].params).each(function(j, el) {
+		if(el.name == name) el.value = val;
+	});
+	var data = { params: request.data[i].params, category_id: request.data[i].category_id, parent_cat: request.data[i].parent_cat, razbors: request.data[i].razbors };
+	var limit = request.itemsLimit;
+	jQuery.ajax({
+		type: 'POST',
+		url: 'http://ci.detectum.com/filter.json?limit=' + limit + '',
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8"
+	})
+	.done(function(data) {
+		request.data.push(data)
+		request.data.length ? processResult(request.data) : alert('Товары с выбранными параметрами не найдены.');
+		initShowMoreBtns();
+		if(jQuery('.selectbox').length) {
+			$('.search-wrapper select').trigger('refresh'); 
+		} else {
+			jQuery('.search-wrapper select').selectbox();
+		}
+		initFilters();
+	})
+	.fail(function(error) {
+		console.log(error);
+	});
+}
+
 function initShowMoreBtns() {
 	jQuery('.more').each(function() {
 		var i = $(this).attr('data-result-block-id');
-		var filterBtnsShowMore = jQuery(this).parent().prev().find('.link-more');
 		var data = { params: request.data[i].params, category_id: request.data[i].category_id, parent_cat: request.data[i].parent_cat, razbors: request.data[i].razbors };
 		var offset = jQuery(this).attr('data-offset');
 		var limit = '0';
 		// console.log(data); 
-		jQuery(this/*, filterBtnsShowMore*/).on('click', function() {
+		jQuery(this).on('click', function() {
 			var showMoreBtn = $(this);
 			showLoading(showMoreBtn);
 			jQuery.ajax({
@@ -84,8 +125,13 @@ function initShowMoreBtns() {
 			.fail(function(error) {
 				console.log(error);
 			});
-			
 			// request.set({ offset: jQuery(this).attr('data-offset') });
+			return false;
+		});
+		
+		var linkMore = this;
+		jQuery(this).parent().prev().find('.link-more').click(function() {
+			$(linkMore).trigger('click');
 			return false;
 		});
 	});
@@ -100,10 +146,14 @@ function showLoading(el) {
 
 function hideShowMoreBtn(el) {
 	el.hide();
+	el.parent().prev().find('span.result').fadeIn(500);
+	el.parent().prev().find('a.link-more').fadeOut(500);
+	el.parent().prev().find('.search-wrapper').removeClass('toggled');
+	// console.log(el.parent().prev().find('.search-wrapper'));
 }
 
 function processShowMore(data, showMoreBtnId) {
-	console.log(data.length);
+	// console.log(data.length);
 	var items = new Array();
 	var itemSkeleton = jQuery('.item').first().clone();
 	for(i in data) {
@@ -145,6 +195,7 @@ function launchSearch(text) {
 		} else {
 			jQuery('.search-wrapper select').selectbox();
 		}
+		initFilters();
 	})
 	.fail(function(error) {
 		console.log(error);
@@ -184,33 +235,42 @@ function getFilters(itemsBlockData, i) { // call for each main arr element
 	return filters;
 }
 
-function processFilterData(body, index, itemsBlockData) {
-	// console.log(request.countItems);
-	// console.log(index);
+function processFilterData(body, blockIndex, itemsBlockData) {
+	body.append('<pre>' + JSON.stringify(itemsBlockData.filters) + '</pre>'); // test string
 	body.find('.category-name').val(itemsBlockData.category);
-	body.find('.result strong').text(request.countItems[index]); // insert countItems
-	body.append('<pre>' + JSON.stringify(itemsBlockData.filters) + '</pre>');
+	body.find('.result strong').text(request.countItems[blockIndex]); // insert countItems
 	body.find('.sort-form').empty();
+	body.find('.search-result .cell').each(function() {
+		if($(this).find('select').length) {
+			$(this).remove();
+		}
+	});
+	
 	var filters = $(document.createElement('fieldset'));
-	// for(i in itemsBlockData.filters.all) {
-		// var filter = itemsBlockData.filters.all[i];
-		// 
-	// }
 	var index = 0;
-	jQuery.each(itemsBlockData.filters.all, function(i, e) {
-		filters.append('<div class="cell"><label for="label'+ index +'">'+ i +'</label><ul></ul></div>');
-		jQuery(this, function(j, f) {
-			if(i < 3) {
-				filters.find('ul').append('<li>'+ this +'</li>');
-			} else {
-				if(!filters.find('select').length) {
-					filters.append('<select class="label'+ i +'"></select>');
-				}
-				filters.find('select').append('<option>'+ this +'</option>');
+	
+	jQuery.each(itemsBlockData.filters.top, function(i, e) { // collecting filters
+		// use html object, not string!
+		filters.append('<div class="cell"><label data-filter-id="' + index + '" for="label'+ index +'">'+ i +'</label></div>');
+		jQuery.each(this, function(j, f) {
+			if(j == 0) {
+				filters.children().last().append('<ul class="label'+ index +'"></ul>');
 			}
+			filters.find('ul.label' + index + '').append('<li><label><input type="radio" name="' + i + '" value="' + this + '" />'+ this +'</label></li>');
 		});
+		// console.log(itemsBlockData.filters.all[i].length );
+		if(itemsBlockData.filters.all[i] != undefined && itemsBlockData.filters.all[i].length > 3) {
+			jQuery.each(itemsBlockData.filters.all[i], function(j, f) {
+				if(j == 0) {
+					filters.children().last().append('<select name="' + i + '" class="label'+ index +'"><option>Не важно</option></select>');
+				}
+				filters.find('select.label' + index + '').append('<option>'+ this +'</option>');
+			});
+		}
 		index += 1;
 	});
+	// append filters in itemsBlockData
+	body.find('.sort-form').append(filters);
 	// console.log(itemsBlockData.filters);
 	return body;
 }
@@ -239,9 +299,9 @@ function showResult(items, filters, showMoreBtns) {
 			// j == false ? jQuery('<div class="result-block extra"></div>').appendTo('.result-holder') : '';
 			if(j == false) {
 				if(i == false) {
-					jQuery('<div class="result-block main n' + i + '"></div>').appendTo('.result-holder');
+					jQuery('<div data-result-block-id="' + i + '" class="result-block main n' + i + '"></div>').appendTo('.result-holder');
 				} else {
-					jQuery('<div class="result-block extra n' + i + '"></div>').appendTo('.result-holder');
+					jQuery('<div data-result-block-id="' + i + '" class="result-block extra n' + i + '"></div>').appendTo('.result-holder');
 				}
 			}
 			jQuery(items[i][j]).clone().appendTo('.result-block.n' + i + '');

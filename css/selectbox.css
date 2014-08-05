@@ -92,10 +92,14 @@
 	font-size: 17px;
 	line-height: 20px;
 	padding: 0;
+	width: 100%;
 }
 .selectbox li {
 	padding: 5px 10px 6px;
 	color: #231F20;
+}
+.selectbox ul li {
+	float: none;
 }
 .selectbox li.sel {
 	font-weight: bold;
