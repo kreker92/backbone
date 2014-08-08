@@ -13,7 +13,9 @@
 	<script type="text/javascript" src="/js/underscore-min.js"></script>
 	<script type="text/javascript" src="/js/backbone-min.js"></script>
 	<script type="text/javascript" src="/js/backbone.queryparams.js"></script>
-	<script type="text/javascript" src="/js/jquery.selectbox.js"></script>
+	<?php 
+	// <script type="text/javascript" src="/js/jquery.selectbox.js"></script>
+	?>
 	<script type="text/javascript" src="/js/main.js"></script>
 	<script type="text/javascript" src="/js/search.js"></script>
 	<!--[if gte IE 9]>

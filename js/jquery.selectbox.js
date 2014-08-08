@@ -27,8 +27,10 @@
 						if (option.eq(i).is(':disabled')) selected = disabled;
 						ddlist += '<li' + selected + '>'+ option.eq(i).text() +'</li>';
 					}
+					var classForDiv = '';
+					if(select.hasClass('hidden')) classForDiv = 'hidden';
 					var selectbox =
-						$('<span class="selectbox" style="display:inline-block;position:relative">'+
+						$('<span class="' + classForDiv + ' selectbox" style="display:inline-block;position:relative">'+
 								'<div class="select" style="float:left;position:relative;z-index:10000"><div class="text">' + optionText + '</div>'+
 									'<span class="trigger"></span>'+
 								'</div>'+
@@ -36,7 +38,7 @@
 									'<ul>' + ddlist + '</ul>'+
 								'</div>'+
 							'</span>');
-					select.before(selectbox).css({position: 'absolute', top: -9999});
+					select.before(selectbox).css({position: 'absolute', top: -9999, right: -9999});
 					var divSelect = selectbox.find('div.select');
 					var divText = selectbox.find('div.text');
 					var dropdown = selectbox.find('div.dropdown');

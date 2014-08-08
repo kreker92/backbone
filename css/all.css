@@ -199,8 +199,9 @@ textarea{
 	position:relative;
 	color:#333;
 	font-size:16px;
-	width:27%;
-	min-width:345px;
+	/* width:27%; */
+	/* min-width:345px; */
+	white-space: nowrap;
 }
 .cell:first-child{
 	width:23.5%;
@@ -316,7 +317,7 @@ textarea{
 	position:absolute;
 	display:none;
 }
-.sort-form ul{
+.sort-form ul, .search-result ul{
 	display:inline-block;
 	vertical-align:top;
 	margin:0;
@@ -325,13 +326,13 @@ textarea{
 	font-size:14px;
 	line-height:32px;
 }
-.sort-form ul+select,
-.sort-form ul+.selectArea{margin-left:10px;}
-.sort-form ul li{
+.sort-form ul+select, .search-result ul+select,
+.sort-form ul+.selectArea, .search-result ul+.selectArea {margin-left:10px;}
+.sort-form ul li, .search-result ul li{
 	float:left;
 	margin:0 5px 0 0;
 }
-/* .sort-form ul a,  */.sort-form ul li label{
+/* .sort-form ul a,  */.sort-form ul li label, .search-result ul li label{
 	display:block;
 	padding:0 9px;
 	border-radius:3px;
@@ -349,6 +350,9 @@ textarea{
 	color: #3b86c4;
 }
 .sort-form ul li input[type="radio"]{
+	/* display: none; */
+}
+.sort-form .cell .short, .search-result .cell .short {
 	display: none;
 }
 /* sort-links */
