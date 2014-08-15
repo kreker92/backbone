@@ -70,7 +70,7 @@ textarea{
 /* page */
 .page{
 	overflow:hidden;
-	padding:160px 0 39px;
+	padding:80px 0 39px;
 	position:relative;
 }
 /* header */
@@ -100,7 +100,7 @@ textarea{
 	/* margin:0 -9999px 10px; */
 	margin:0 -9999px 0;
 	position: relative;
-	z-index: 10;
+	z-index: 100;
 }
 .search-wrapper {
 	padding-top: 10px;
@@ -177,6 +177,12 @@ textarea{
 	position:relative;
 	padding:12px 100px 3px 9px;
 }
+.search-result .dropdown ul li.none {
+	display: list-item;
+}
+.search-result .dropdown ul li {
+	display: none;
+}
 .search-result input[type='text']{
 	float:left;
 	width:86%;
@@ -188,6 +194,9 @@ textarea{
 	border-radius:3px;
 	border-top-color:#d2d2d2;
 	box-shadow:0 1px 1px #ececec inset;
+}
+.search-result input[type='text'].category-name {
+	margin-bottom: 9px;
 }
 /* cell */
 .cell{
@@ -267,6 +276,9 @@ textarea{
 	/* padding:0 5px; */
 }
 /* sort-form */
+.search-wrapper.opened .sort-form {
+	overflow: visible;
+}
 .sort-form{
 	/* overflow:hidden; */
 	border:3px solid #ececec;
@@ -274,6 +286,26 @@ textarea{
 	padding:9px 15px 0;
 	margin:10px 8px 22px;
 	position:relative;
+	height: 45px;
+}
+.sort-form fieldset{
+	padding-right: 80px;
+}
+.search-wrapper .sort-form .cell {
+	display: none;
+}
+.hidden { display: none; }
+.search-wrapper .sort-form .cell:nth-child(1), .search-wrapper .sort-form .cell:nth-child(2)  {
+	display: block;
+}
+.search-wrapper.opened .sort-form .cell {
+	display: block;
+}
+.search-wrapper.opened .sort-form {
+	height: auto;
+}
+.sort-form .selectbox ul li.sel {
+	display: none;
 }
 .sort-form .cell:first-child,
 .sort-form .cell{
@@ -288,10 +320,16 @@ textarea{
 	left:auto;
 	right:-1%;
 }
+.search-wrapper .sort-form input[type="submit"] {
+	position: absolute;
+	right: 15px;
+	padding: 0 5px 3px;
+}
 .sort-form input[type="submit"],
 .link-more{
 	float:left;
-	width:51px;
+	/* width:51px; */
+	min-width: 51px;
 	height:35px;
 	border-radius:2px;
 	padding:0 0 3px;
@@ -307,6 +345,7 @@ textarea{
 	background: -ms-linear-gradient(top,  #a2a2a2 0%,#9a9a9a 32%,#979797 40%,#959595 40%,#909090 57%,#8e8e8e 58%,#858585 84%,#848484 95%,#6c6c6c 95%,#6c6c6c 100%);
 	background: linear-gradient(to bottom,  #a2a2a2 0%,#9a9a9a 32%,#979797 40%,#959595 40%,#909090 57%,#8e8e8e 58%,#858585 84%,#848484 95%,#6c6c6c 95%,#6c6c6c 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a2a2a2', endColorstr='#6c6c6c',GradientType=0 );
+	outline: none;
 }
 .link-more{
 	width:auto;
@@ -350,9 +389,9 @@ textarea{
 	color: #3b86c4;
 }
 .sort-form ul li input[type="radio"]{
-	/* display: none; */
+	display: none;
 }
-.sort-form .cell .short, .search-result .cell .short {
+/* .sort-form .cell .short, */ .search-result .cell .short {
 	display: none;
 }
 /* sort-links */
@@ -487,7 +526,7 @@ textarea{
 	color:#372f2b;
 }
 /* rating */
-.rating{
+.rating, .item > .row .rating.style02 {
 	margin:0 13px 0 0;
 	padding:0;
 	float:left;
@@ -497,7 +536,7 @@ textarea{
 	position:relative;
 	background:url(/img/stars.png) repeat-x;
 }
-.rating li{
+.rating li, .item > .row .rating.style02 li{
 	float:left;
 	height:15px;
 	text-indent:-9999px;
@@ -511,7 +550,7 @@ textarea{
 .rating .five-stars{width:75px; margin-left:-60px;}
 .rating .active{background-position:0 -15px;}
 /* big rating */
-.rating.style02{
+.rating.style02 {
 	width:100px;
 	margin:0 15px 0 0;
 	height:19px;
@@ -559,6 +598,7 @@ textarea{
 	position:absolute;
 	display:none;
 	left:0;
+	width: calc(100% - 162px);
 }
 .item.active .gallery-section{display:block;}
 .item.active {margin-bottom:460px;}
@@ -595,16 +635,18 @@ textarea{
 	right:auto;
 	left:25px;
 	background-position:-93px -51px;
+	display: none;
 }
 .gallery-section .next{
 	right:25px;
 	background-position:-129px -51px;
+	display: none;
 }
 .gallery-section>.holder{
 	overflow:hidden;
 	position:relative;
 	width:100%;
-	height:299px;
+	min-height:299px;
 }
 /* gallery */
 .gallery{
@@ -650,9 +692,9 @@ textarea{
 }
 /* btn-box */
 .btn-box{
-	position:absolute;
+	/* position:absolute; */
 	bottom:11px;
-	margin:0 0 0 4px;
+	margin: 20px 0 0 4px;
 	min-width:300px;
 	line-height:22px;
 }

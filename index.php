@@ -8,15 +8,20 @@
 	
 	<link media="all" type="text/css" rel="stylesheet" href="css/all.css">
 	<link media="all" type="text/css" rel="stylesheet" href="css/selectbox.css">
+	<link media="all" type="text/css" rel="stylesheet" href="css/jquery-ui.css">
 	
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/underscore-min.js"></script>
 	<script type="text/javascript" src="/js/backbone-min.js"></script>
 	<script type="text/javascript" src="/js/backbone.queryparams.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.js"></script>
+	
 	<?php 
 	// <script type="text/javascript" src="/js/jquery.selectbox.js"></script>
 	?>
-	<script type="text/javascript" src="/js/main.js"></script>
+	<?php 
+	// <script type="text/javascript" src="/js/main.js"></script>
+	?>
 	<script type="text/javascript" src="/js/search.js"></script>
 	<!--[if gte IE 9]>
 		<style type="text/css">
@@ -37,8 +42,8 @@
 					<strong class="logo"><a href="/">Detectum</a></strong>
 					<form class="search-form" action="#">
 						<fieldset>
-							<input type="text" value="лестница">
-							<input type="submit" value="Найти">
+							<input autofocus="autofocus" id="q" name="q" type="text" value="лестница" />
+							<input type="submit" value="Найти" />
 						</fieldset>
 					</form>
 				</div>
